@@ -9,9 +9,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
   resources :countries
-  # get "/countries/:id", to: "countries#show"
-  # get "/countries/new", to: "countries#new"
-  # post "/countries/:id", to: "countries#create"
-  # get "/countries", to: "countries#index"
+
 end
