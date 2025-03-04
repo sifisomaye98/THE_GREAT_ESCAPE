@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   # root "posts#index"
   get "/countries/new", to: "countries#new"
   post "/countries/:id", to: "countries#create"
+  get "/countries", to: "countries#index"
 end

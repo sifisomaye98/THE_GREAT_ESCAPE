@@ -18,4 +18,8 @@ class CountriesController < ApplicationController
   def country_params
     params.require(:country).permit(:image_url, :name, :description, :initial_price, :user_id)
   end
+
+  def index
+    @countries = Country.all
+  end
 end
