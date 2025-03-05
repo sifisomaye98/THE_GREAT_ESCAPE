@@ -5,7 +5,6 @@ class RentalsController < ApplicationController
 
   def accept
     @rental.update(status: 1)
-    redirect_to 
 
   end
 
