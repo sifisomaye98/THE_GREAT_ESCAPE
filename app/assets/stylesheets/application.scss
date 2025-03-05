@@ -10,9 +10,10 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+@import "components/card";
 
 body {
-  background-color: white;
+  background-color: rgb(244, 222, 248);
 }
 
 .header {
@@ -21,4 +22,8 @@ body {
 
 a {
   text-decoration: none;
+  display: block;
+}
+.nav-link{
+  color: white;
 }

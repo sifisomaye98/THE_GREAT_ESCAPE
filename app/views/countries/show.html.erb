@@ -1,16 +1,8 @@
-<div class="container" mt-4>
-
-<h1><%= @country.name %></h1>
-<p><%= @country.description %></p>
-<img src="<%= @country.image_url %>" alt="zar">
-
-<%= link_to "Back to all countries", countries_path %>
-
-  <h1><%= @country.name %></h1>
-  <p><%= @country.description %></p>
-  <img src="<%= @country.image_url %>" alt="zar">
-  <%= link_to "Rent this country", new_country_rental_path(@country.id)%>
-  <%= link_to "Back to all countries", countries_path %>
-  <%= link_to "See all your bids",country_rentals_path(@country) %>
-
+<div class="container my-3">
+  <div class="card">
+    <h1><%= @country.name %></h1>
+    <p><%= @country.description %></p>
+    <%= image_tag "#{@country.image_url}", alt: "country", width: 600 %>
+  </div>
+  <%= link_to "Back to all countries", countries_path, class: "btn btn-primary" %>
 </div>
