@@ -5,6 +5,7 @@ class CountriesController < ApplicationController
 
   def create
     @country = Country.new(country_params)
+    @country.user = current_user
     if @country.save!
       redirect_to country_path(@country)
     else
