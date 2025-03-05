@@ -29,4 +29,16 @@ class RentalsController < ApplicationController
   def rental_params
     params.require(:rental).permit(:offer_value)
   end
+
+  def accept
+    @rental.update(status: 1)
+    redirect_to 
+
+  end
+
+  def decline
+    @rental.update(status: 2)
+    redirect_to
+  end
+
 end
