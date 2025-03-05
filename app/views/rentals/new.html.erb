@@ -1,0 +1,7 @@
+<div class="container">
+  <h1> Make a new rental </h1>
+    <%= simple_form_for([@country, @rental]) do |f| %>
+      <%= f.input :offer_value %>
+      <%= f.submit %>
+    <% end %>
+</div>
