@@ -1,0 +1,17 @@
+.card-country {
+  border: solid 1px black;
+  min-height: 14em;
+  // width: 23em;
+  overflow: hidden;
+  border-radius: 10px;
+  // transition: 0.7s ease
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+
+  p {
+    font-size: 2rem;
+    text-shadow: 2px 3px 5px rgba(0,0,0,1);
+  }
+}
