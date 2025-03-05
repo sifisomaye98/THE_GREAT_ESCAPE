@@ -1,10 +1,18 @@
 <div class="container my-3">
-  <div class="card">
-    <h1><%= @country.name %></h1>
-    <p><%= @country.description %></p>
-    <%= image_tag "#{@country.image_url}", alt: "country", width: 600 %>
+  <%= link_to "Back to all countries", countries_path, class: "btn btn-primary mt-3" %>
+  <div class="card-country-show my-3">
+    <%= image_tag "#{@country.image_url}", alt: "country" %>
+    <div class="p-3 d-flex flex-column justify-content-between">
+      <div>
+        <h1 class="text-center"><%= @country.name %></h1>
+        <p class="fs-5"><%= @country.description %></p>
+        <p><strong>Rental Price: </strong>$<%= @country.initial_price %></p>
+        <p><strong>Country Owner: </strong> <%= @country.user.first_name %> <%= @country.user.last_name %></p>
+      </div>
+      <div class="d-flex flex-column gap-3">
+        <%= link_to "Rent this country", new_country_rental_path(@country.id), class: "btn btn-primary"%>
+        <%= link_to "See all your bids", country_rentals_path(@country), class: "btn btn-secondary" %>
+      </div>
+    </div>
   </div>
-  <%= link_to "Back to all countries", countries_path, class: "btn btn-primary" %>
-  <%= link_to "Rent this country", new_country_rental_path(@country.id)%>
-  <%= link_to "See all your bids",country_rentals_path(@country) %>
 </div>
