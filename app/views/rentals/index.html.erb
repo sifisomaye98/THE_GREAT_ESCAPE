@@ -1,8 +1,9 @@
 <div class="container">
-<h1>Rental</h1>
-  <ul>
-  <% @rentals.each do |rental| %>
-    <li><%= link_to rental.name, rental_path(rental) %></li>
-  <% end %>
-</ul>
+  <h1> See all of your rentals  <h1>
+    <%= @my_rentals.each do |rental| %>
+      <p>
+        This offer is from <%=rental.user.first_name%>
+        They offered R<%= rental.offer_value%>
+      </p>
+    <%end%>
 </div>
