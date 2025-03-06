@@ -1,33 +1,33 @@
 
 <div class="container my-5">
-  <h1> My Dashboard </h1>
+  <h1> My Dashboard <h1>
 
-  <h2>Countries I Own</h2>
-  <% if @my_countries.present? %>
-    <ul>
-      <% @my_countries.each do |country| %>
-        <li><%= country.name %></li>
-      <% end %>
-    </ul>
-  <% else %>
-    <p>You do not own any countries yet.</p>
-  <% end %>
+  <h2>Bids to Rent my Countries</h2>
 
-  <h2>Users Who Rented My Countries</h2>
   <% if @rentals.present? %>
-    <ul>
+    <div class="dashboard-bids-grid">
       <% @rentals.each do |rental| %>
-        <p>
-          A bid by <%= rental.user.first_name %> for R <%= rental.offer_value %>
-          <%= link_to "Accept", accept_rental_path(rental.id) %>
-          <%= link_to "Decline", decline_rental_path(rental.id) %>
-        </p>
+        <div class="card-country-rental my-3">
+          <%= image_tag "#{rental.country.image_url}", alt: "country" %>
+          <div class="p-3 d-flex flex-column justify-content-between">
+            <div>
+              <h3><%= rental.country.name %></h3>
+              <p><strong>Initial Price: </strong>$<%= rental.country.initial_price %></p>
+            </div>
+            <div>
+              <h6>Bids:</h6>
+              <p><%= rental.user.first_name %> bid R<%= rental.offer_value %></p>
+              <%= link_to "Accept", accept_rental_path(rental.id) %>
+              <%= link_to "Decline", decline_rental_path(rental.id) %>
+            </div>
+          </div>
+        </div>
       <% end %>
-    </ul>
-  <% else %>
-    <p>No rentals available at the moment.</p>
-  <% end %>
-
+    </div>
+   <% else %>
+      <p>No one has bid to rent any of your countries.</p>
+   <% end %>
+    
   <h2>Countries I Have Rented</h2>
   <% if @rented_countries.present? %>
     <ul>

@@ -26,3 +26,18 @@
     width: 50%;
   }
 }
+
+.card-country-show-info {
+  width: 50%;
+}
+
+.card-country-rental {
+  display: flex;
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+
+  img {
+    width: 30%;
+  }
+}
