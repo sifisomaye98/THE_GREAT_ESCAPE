@@ -1,4 +1,15 @@
 class CountriesController < ApplicationController
+  def index
+    @countries = Country.all
+    if params[:search].present?
+      @countries = @countries.where("name ILIKE ?", "%#{params[:search][:query]}%")
+    end
+  end
+
+  def show
+    @country = Country.find(params[:id])
+  end
+
   def new
     @country = Country.new
   end
@@ -11,14 +22,6 @@ class CountriesController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
-  end
-
-  def index
-    @countries = Country.all
-  end
-
-  def show
-    @country = Country.find(params[:id])
   end
 
   private
