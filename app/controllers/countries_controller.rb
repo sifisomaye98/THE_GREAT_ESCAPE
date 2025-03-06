@@ -15,6 +15,7 @@ class CountriesController < ApplicationController
 
   def index
     @countries = Country.all
+    @rental = Rental.new
   end
 
   def show

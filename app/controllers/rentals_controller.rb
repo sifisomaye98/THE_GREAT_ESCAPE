@@ -1,8 +1,13 @@
 class RentalsController < ApplicationController
   def index
-    @my_rentals = Rental.where(user_id: current_user)
-    @my_rentals = current_user.rentals
+    @my_countries = Country.where(user_id: current_user)
+    @renters = User.joins(:rentals).where(rentals: { country_id: @my_countries.pluck(:id) }).distinct
+
+    # Countries the current user has rented
+    @rented_countries = Country.joins(:rentals).where(rentals: { user_id: current_user.id })
+    @rentals = Rental.all
   end
+
   # def index
   #   @country = Country.find(params[:country_id])
   #   @rentals = Rental.where(country: @country)
