@@ -1,16 +1,55 @@
-<% @renters.each do |renter| %>
-  <h1><%= renter.first_name %></h1>
+<div class="container my-5">
+  <h1><%= current_user.first_name %>'s Dashboard<h1>
 
-  <% renter.rentals.each do |rental| %> <!-- Loop through the rentals of each user -->
-    <% if rental.pending? %> <!-- Check rental's status -->
-      <p>pending</p>
-    <% elsif rental.accepted? %>
-      <p>accepted</p>
-    <% elsif rental.declined? %>
-      <p>declined</p>
+  <h2 class="mt-4">Bids to Rent my Countries</h2>
+
+  <% if @countries.present? %>
+
+    <div class="dashboard-bids-grid">
+      <% @countries.each do |country| %>
+        <div class="card-country-rental my-3">
+          <%= image_tag "#{country.image_url}", alt: "country" %>
+          <div class="p-3 d-flex flex-column justify-content-between flex-grow-1">
+            <div>
+              <h3><%= country.name %></h3>
+              <p><strong>Initial Price: </strong>$<%= country.initial_price %></p>
+            </div>
+            <div>
+              <h6>Bids:</h6>
+              <% country.rentals.each do |rental| %>
+              <div class="d-flex justify-content-between border-top border-bottom p-2 align-items-center">
+                <p class="m-0"><%= rental.user.first_name %> bid R<%= rental.offer_value %></p>
+                <% if rental.pending? %>
+                  <div>
+                    <%= link_to "Accept", accept_rental_path(rental.id), class: "btn btn-success" %>
+                    <%= link_to "Decline", decline_rental_path(rental.id), class: "btn btn-danger" %>
+                  </div>
+                <% else %>
+                  <p class="m-0"><%= rental.status %></p>
+                <% end %>
+              </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+   <% else %>
+      <p>No one has bid to rent any of your countries.</p>
+   <% end %>
+
+  <h2 class="mt-4">My Bids to Rent Countries</h2>
+
+  <% if @bids.present? %>
+    <% @bids.each do |bid| %>
+      <div class="bid-card border-top border-bottom bg-white p-3 mb-3">
+        <p><strong>Country: </strong><%= bid.country.name %></p>
+        <p><strong>Bid amount: </strong>R<%= bid.offer_value %></p>
+        <p><strong>Bid status: </strong><%= bid.status %></p>
+      </div>
     <% end %>
+  <% else %>
+    <p>You haven't rented any countries yet.</p>
   <% end %>
-<% end %>
-
-
-
+</div>
