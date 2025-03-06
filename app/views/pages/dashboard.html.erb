@@ -1,0 +1,16 @@
+<% @renters.each do |renter| %>
+  <h1><%= renter.first_name %></h1>
+
+  <% renter.rentals.each do |rental| %> <!-- Loop through the rentals of each user -->
+    <% if rental.pending? %> <!-- Check rental's status -->
+      <p>pending</p>
+    <% elsif rental.accepted? %>
+      <p>accepted</p>
+    <% elsif rental.declined? %>
+      <p>declined</p>
+    <% end %>
+  <% end %>
+<% end %>
+
+
+
