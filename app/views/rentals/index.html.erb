@@ -11,33 +11,28 @@
       <%# <% else %>
       <%# <p> You don't have permission to view this page. </p> %>
     <%# <%end%>
-  <h2>My Countries</h2>
 
-  <div class="dashboard-grid mb-5">
-    <% @my_countries.each do |country| %>
-      <div class="card" style="width: 18rem;">
-        <%= image_tag "#{country.image_url}", alt: "country", class: "card-img-top"%>
-        <div class="card-body">
-          <h5 class="card-title"><%= country.name %></h5>
-          <p class="card-text"><%= country.description %></p>
-          <%# <a href="#" class="btn btn-primary">See country</a> %>
-          <%= link_to "View Country", country_path(country), class: "btn btn-primary" %>
+  <h2>Bids to Rent my Countries</h2>
+
+  <div class="dashboard-bids-grid">
+    <% @rentals.each do |rental| %>
+      <div class="card-country-rental my-3">
+        <%= image_tag "#{rental.country.image_url}", alt: "country" %>
+        <div class="p-3 d-flex flex-column justify-content-between">
+          <div>
+            <h3><%= rental.country.name %></h3>
+            <p><strong>Initial Price: </strong>$<%= rental.country.initial_price %></p>
+          </div>
+          <div>
+            <h6>Bids:</h6>
+            <p><%= rental.user.first_name %> bid R<%= rental.offer_value %></p>
+          </div>
         </div>
       </div>
     <% end %>
   </div>
 
-  <h2>Users Who Rented My Countries</h2>
-  <ul>
-    <% @rentals.each do |rental| %>
-        <p>
-        A bid by <%= rental.user.first_name %>
-        For R <%= rental.offer_value%>
-        </p>
-    <% end %>
-  </ul>
-
-  <h2>Countries I Have Rented</h2>
+  <h2>My Bids to Rent Countries</h2>
   <ul>
     <% @rented_countries.each do |country| %>
       <li><%= country.name %></li>
