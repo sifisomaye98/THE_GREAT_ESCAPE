@@ -12,12 +12,20 @@
 @import "pages/index";
 @import "components/card";
 
-body {
-  background-color: rgb(244, 222, 248);
+html, body {
+  height: 100%;
+  margin: 0;
 }
 
-.header {
-  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+body {
+  background-color: rgb(244, 222, 248);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1 0 auto;
 }
 
 a {
