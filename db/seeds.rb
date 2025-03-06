@@ -49,10 +49,10 @@ brazil = Country.create!(
 puts "#{Country.count} countries created!"
 
 puts "Creating rentals..."
-Rental.create!(offer_value: 200, user: nova, country: japan, status: :pending)
-Rental.create!(offer_value: 300, user: orion, country: iceland, status: :pending)
-Rental.create!(offer_value: 250, user: zara, country: italy, status: :pending)
-Rental.create!(offer_value: 350, user: phoenix, country: brazil, status: :pending)
+Rental.create!(offer_value: 200, user: nova, country: japan)
+Rental.create!(offer_value: 300, user: orion, country: iceland)
+Rental.create!(offer_value: 250, user: zara, country: italy)
+Rental.create!(offer_value: 350, user: phoenix, country: brazil)
 
 puts "#{Rental.count} rentals created!"
 puts "🌱 Seeding complete!"
