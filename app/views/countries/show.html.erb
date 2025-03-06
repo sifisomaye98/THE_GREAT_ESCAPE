@@ -1,8 +1,8 @@
-<div class="container my-3">
+<div class="container mb-5">
   <%= link_to "Back to all countries", countries_path, class: "btn btn-primary mt-3" %>
   <div class="card-country-show my-3">
     <%= image_tag "#{@country.image_url}", alt: "country" %>
-    <div class="p-3 d-flex flex-column justify-content-between">
+    <div class="p-3 d-flex flex-column justify-content-between card-country-show-info">
       <div>
         <h1 class="text-center"><%= @country.name %></h1>
         <p class="fs-5"><%= @country.description %></p>
