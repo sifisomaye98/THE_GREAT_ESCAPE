@@ -15,3 +15,9 @@
     grid-template-columns: 1fr;
   }
 }
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 12px;
+}

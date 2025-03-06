@@ -23,7 +23,7 @@ class CountriesController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
-  
+
   def index
     @countries = Country.all
     @rental = Rental.new
@@ -32,7 +32,7 @@ class CountriesController < ApplicationController
   def show
     @country = Country.find(params[:id])
   end
-  
+
   private
 
   def country_params
