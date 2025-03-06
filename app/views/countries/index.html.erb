@@ -1,5 +1,16 @@
 <div class="container my-5">
-  <h1>Countries for Rent</h1>
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="me-3 mb-0">Countries for Rent</h1>
+
+    <%= simple_form_for :search, url: root_path, method: :get, html: { class: "items-search"} do |f| %>
+      <div class="search-form-control">
+        <input class="form-control rounded-pill string required px-3" type="text" placeholder="Search Countries" name="search[query]" id="search_query" />
+        <button name="button" type="submit" class="btn btn-flat">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+    <% end %>
+  </div>
 
   <div class="countries-grid mt-3">
     <% @countries.each do |country| %>
