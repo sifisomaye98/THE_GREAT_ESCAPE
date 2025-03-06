@@ -1,6 +1,7 @@
 class CountriesController < ApplicationController
   def index
     @countries = Country.all
+    @rental = Rental.new
     if params[:search].present?
       @countries = @countries.where("name ILIKE ?", "%#{params[:search][:query]}%")
     end
@@ -8,6 +9,11 @@ class CountriesController < ApplicationController
 
   def show
     @country = Country.find(params[:id])
+    @markers = [
+      {
+          lat: @country.latitude,
+          lng: @country.longitude,
+    }]
   end
 
   def new
@@ -23,16 +29,7 @@ class CountriesController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
-  
-  def index
-    @countries = Country.all
-    @rental = Rental.new
-  end
 
-  def show
-    @country = Country.find(params[:id])
-  end
-  
   private
 
   def country_params
