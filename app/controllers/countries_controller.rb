@@ -33,6 +33,6 @@ class CountriesController < ApplicationController
   private
 
   def country_params
-    params.require(:country).permit(:image_url, :name, :description, :initial_price)
+    params.require(:country).permit(:photo, :name, :description, :initial_price)
   end
 end

@@ -1,3 +1,4 @@
+require "open-uri"
 puts "Cleaning database..."
 # Delete in the right order to avoid foreign key conflicts
 Rental.destroy_all
@@ -21,6 +22,11 @@ japan = Country.create!(
   initial_price: 1000,
   user: jupiter
 )
+p japan
+file = URI.parse("https://images.unsplash.com/photo-1542051841857-5f90071e7989").open
+japan.photo.attach(io: file, filename: "#{japan.name}_image.png", content_type: "image/png")
+japan.save
+
 
 iceland = Country.create!(
   name: "Iceland",
@@ -29,6 +35,10 @@ iceland = Country.create!(
   initial_price: 1200,
   user: nova
 )
+p iceland
+file = URI.parse(iceland.image_url).open
+iceland.photo.attach(io: file, filename: "#{iceland.name}_image.png", content_type: "image/png")
+iceland.save
 
 italy = Country.create!(
   name: "Italy",
@@ -37,6 +47,10 @@ italy = Country.create!(
   initial_price: 1500,
   user: jupiter
 )
+file = URI.parse(italy.image_url).open
+italy.photo.attach(io: file, filename: "#{italy.name}_image.png", content_type: "image/png")
+italy.save
+p italy
 
 brazil = Country.create!(
   name: "Brazil",
@@ -45,38 +59,59 @@ brazil = Country.create!(
   initial_price: 1100,
   user: orion
 )
+file = URI.parse(brazil.image_url).open
+brazil.photo.attach(io: file, filename: "#{brazil.name}_image.png", content_type: "image/png")
+brazil.save
+p brazil
 
 canada = Country.create!(
   name: "Canada",
   description: "Land of the maple leaf and stunning wilderness.",
-  image_url: "https://images.unsplash.com/photo-1529981603443-1b88c9c848aa",
+  image_url: "https://images.unsplash.com/photo-1508693926297-1d61ee3df82a?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   initial_price: 1300,
   user: nova
 )
+# p canada.image_url
+file = URI.parse(canada.image_url).open
+canada.photo.attach(io: file, filename: "#{canada.name}_image.png", content_type: "image/png")
+canada.save
+p canada
 
 australia = Country.create!(
   name: "Australia",
   description: "Golden beaches and vast deserts.",
-  image_url: "https://images.unsplash.com/photo-1585801227492-07eb59204c42",
+  image_url: "https://images.unsplash.com/photo-1624138784614-87fd1b6528f8?q=80&w=2833&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   initial_price: 1400,
   user: phoenix
 )
+file = URI.parse(australia.image_url).open
+australia.photo.attach(io: file, filename: "#{australia.name}_image.png", content_type: "image/png")
+australia.save
+p australia
 
 egypt = Country.create!(
   name: "Egypt",
   description: "Land of the Pharaohs and the great pyramids.",
-  image_url: "https://images.unsplash.com/photo-1535407339381-232b7d43a67d",
+  image_url: "https://images.unsplash.com/photo-1629468855534-450d7c4c5f72?q=80&w=2252&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   initial_price: 1250,
   user: zara
 )
+file = URI.parse(egypt.image_url).open
+egypt.photo.attach(io: file, filename: "#{egypt.name}_image.png", content_type: "image/png")
+egypt.save
+p egypt
 
 greece = Country.create!(
   name: "Greece",
   description: "White-washed villages overlooking the Aegean Sea.",
-  image_url: "https://images.unsplash.com/photo-1526392060635-9d6019884377",
+  image_url: "https://images.unsplash.com/photo-1587975844577-56dfe5d3fca8?q=80&w=2334&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   initial_price: 1350,
   user: phoenix
 )
+file = URI.parse(greece.image_url).open
+greece.photo.attach(io: file, filename: "#{greece.name}_image.png", content_type: "image/png")
+greece.save
+p greece
 
 puts "#{Country.count} countries created!"
 
