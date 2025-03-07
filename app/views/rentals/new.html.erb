@@ -1,7 +1,20 @@
-<div class="container">
-  <h1> Make a new rental </h1>
+<div class="container center-page d-flex flex-column ">
+  <h1 class="my-3" style="text-align:center"> Make a new rental </h1>
+<div class= "d-flex center-page justify-content-center"">
+
+
+ <p class="p-5 w-50"> Ever wanted to go deep into rooted traditions,experience blends of indulged site-seeing, fun activities to explore around the globe.
+             Get your groove on!
+             Hurry up and decide which country you want before rentals run out
+             Let's get swifty!</p>
+    <%= image_tag "trump.png", alt: "image", style:"width:240px"%>
+</div>
+  <div class="p-5 w-75 center-page">
+  <h2>Place your bid:</h2>
+  <p><%= @country.user.first_name %> is asking $<%= @country.initial_price %></p>
     <%= simple_form_for([@country, @rental]) do |f| %>
       <%= f.input :offer_value %>
-      <%= f.submit %>
+      <%= f.submit class: "btn btn-primary"%>
     <% end %>
+    </div>
 </div>
