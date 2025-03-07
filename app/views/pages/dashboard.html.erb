@@ -40,16 +40,22 @@
    <% end %>
 
   <h2 class="mt-4" style="text-align:center">My Bids to Rent Countries</h2>
-
-  <% if @bids.present? %>
-    <% @bids.each do |bid| %>
-      <div class="bid-card border-top border-bottom bg-white p-3 mb-3" style="text-align:center">
-        <p><strong>Country: </strong><%= bid.country.name %></p>
-        <p><strong>Bid amount: </strong>R<%= bid.offer_value %></p>
-        <p><strong>Bid status: </strong><%= bid.status %></p>
-      </div>
-    <% end %>
-  <% else %>
-    <p style="text-align:center">You haven't rented any countries yet.</p>
-  <% end %>
+    <div class="dashboard-bids-grid my-3">
+      <% if @bids.present? %>
+        <% @bids.each do |bid| %>
+          <div class="card-country-rental my-3">
+            <%= cl_image_tag(bid.country.photo.key, height: 300, width: 400, crop: :fill, alt: "country") %>
+            <div class="p-3 d-flex flex-column justify-content-between flex-grow-1">
+              <h3><%= bid.country.name %></h3>
+              <div class="d-flex justify-content-between border-top border-bottom p-2 align-items-center">
+                <p><strong>Bid amount: </strong>R<%= bid.offer_value %></p>
+                <p><strong>Bid status: </strong><%= bid.status %></p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <p style="text-align:center">You haven't rented any countries yet.</p>
+      <% end %>
+    </div>
 </div>

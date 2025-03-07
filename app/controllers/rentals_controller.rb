@@ -31,12 +31,12 @@ class RentalsController < ApplicationController
 
   def accept
     @rental.update(status: 1)
-    redirect_to dashboard_path
+    redirect_to dashboard_path, alert: "offer accepted"
   end
 
   def decline
     @rental.update(status: 2)
-    redirect_to dashboard_path
+    redirect_to dashboard_path, alert: "offer declined"
   end
 
   private
