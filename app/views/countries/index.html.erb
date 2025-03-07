@@ -16,7 +16,7 @@
   <div class="countries-grid mt-3">
     <% @countries.each do |country| %>
       <%= link_to country_path(country) do %>
-        <div class="card-country" style="background-image: url('<%= country.image_url %>'); background-size: cover; background-position: center;">
+        <div class="card-country" style="background-image: url('<%= cl_image_tag(@country.photo.key, alt: "country") %>'); background-size: cover; background-position: center;">
           <p><%= country.name %></p>
         </div>
       <% end %>
