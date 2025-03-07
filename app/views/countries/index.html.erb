@@ -13,13 +13,15 @@
     <% end %>
   </div>
 
-  <div class="countries-grid mt-3">
-    <% @countries.each do |country| %>
-      <%= link_to country_path(country) do %>
-        <div class="card-country" style="background-image: url('<%= cl_image_tag(@country.photo.key, alt: "country") %>'); background-size: cover; background-position: center;">
-          <p><%= country.name %></p>
-        </div>
-      <% end %>
+  <div class="countries-grid mt-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+  <% @countries.each do |country| %>
+    <%= link_to country_path(country), class: "relative block rounded-lg overflow-hidden group" do %>
+
+
+      <!-- Overlay with Text -->
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path(country.photo.key, height: 300, width: 430, crop: :fill, alt: "country") %>)">
+        <p><%= country.name %></p>
+      </div>
     <% end %>
-  </div>
+  <% end %>
 </div>
