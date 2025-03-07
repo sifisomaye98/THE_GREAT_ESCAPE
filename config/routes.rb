@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   resources :countries do
-    resources :rentals, only: [:index ,:new ,:create]
+    resources :rentals, only: [:new ,:create]
   end
 
   resources :rentals, only: [:edit ,:update, :show, :destroy] do
